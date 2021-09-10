@@ -1,7 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://bootswatch.com/5/cerulean/bootstrap.min.css">
 		<title>CI-Library</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/cerulean/bootstrap.min.css">
+	
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
