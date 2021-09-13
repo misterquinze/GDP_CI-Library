@@ -61,4 +61,21 @@ class Buku extends CI_Controller {
         }
     
     }
+
+	public function delete($bukuId) {
+		if (is_null($bukuId)) {
+			$this->session->set_flashdata('error', 'buku belum dipilih');
+		}
+
+		$result = $this->buku_model->deleteBuku($bukuId);
+
+		$this->session->set_flashdata(
+			($result->status==200) ? 'success' : 'error',
+			"<strong>Respond Status : </strong> $result->status<br />
+			<strong>Respond Error : </strong> $result->error<br />
+			<strong>Message : </strong> $result->message<br />"
+		);
+
+		redirect('buku/index');
+	}
 }

@@ -46,40 +46,65 @@ class Buku_Model extends CI_Model {
     }
 
     public function editBuku($bukuId) {
-            //Mengakses Web Service menggunakan HTTP Request
-            // $api_url = "http://localhost:8081/buku/$idBuku";
+        //Mengakses Web Service menggunakan HTTP Request
+        //$api_url = "http://localhost:8888/buku/$bukuId";
 
-            $data = array(
-                'id' => $this->input->post('id', true),
-                'judul' => $this->input->post('judul', true),
-                'pengarang' => $this->input->post('pengarang', true),
-                'penerbit' => $this->input->post('penerbit', true),
-                'tglterbit' => $this->input->post('tglTerbit', true),
-                'isbn' => $this->input->post('isbn', true),
-                'userid' => $this->input->post('userId', true)
-            );
+        $data = array(
+            'id' => $this->input->post('id', true),
+            'judul' => $this->input->post('judul', true),
+            'pengarang' => $this->input->post('pengarang', true),
+            'penerbit' => $this->input->post('penerbit', true),
+            'tglterbit' => $this->input->post('tglTerbit', true),
+            'isbn' => $this->input->post('isbn', true),
+            'userid' => $this->input->post('userId', true)
+        );
 
-            $svcPut = curl_init();
+        $svcPut = curl_init();
 
-            curl_setopt_array($svcPut, array(
-                CURLOPT_URL => $this->svcUrl,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'PUT',
-                CURLOPT_POSTFIELDS => json_encode($data),
-                CURLOPT_HTTPHEADER => array('Content-Type: application/json')
-            ));
+        curl_setopt_array($svcPut, array(
+            CURLOPT_URL => $this->svcUrl . $bukuId,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'PUT',
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json')
+        ));
 
-            $response = json_decode(curl_exec($svcPut));
+        $response = json_decode(curl_exec($svcPut));
 
-            curl_close($svcPut);
+        curl_close($svcPut);
 
-            // var_dump($response);
-            if (!is_null($response))            
-                return $response;
-            else
-                show_404();
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
 
     }
+
+	public function deleteBuku($bukuId) {
+ 
+        $svcDelete = curl_init();
+
+        curl_setopt_array($svcDelete, array(
+            CURLOPT_URL => $this->svcUrl . $bukuId,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'DELETE'
+        ));
+
+        $response = json_decode(curl_exec($svcDelete));
+
+        curl_close($svcDelete);
+
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+
+    }
+
 }

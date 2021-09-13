@@ -14,10 +14,16 @@
 				</ul>
 			</div>
 			<div class="card-footer d-flex justify-content-between">
-				<?=form_open(site_url("/buku/delete/$buku->id"), 'style="width:100%" method="delete"'); ?>
+				<!-- menggunakan form -->
+				<!-- <?=form_open(site_url("/buku/delete/$buku->id"), 'style="width:100%" method="delete"'); ?>
 					<a href="<?=site_url("/buku/");?>" class="btn btn-dark">&lt;</a>
 					<a href="<?=site_url("/buku/edit/" . $buku->id);?>" class="btn btn-success btn-block">Edit</a>
 					<input type="submit" value="delete" class="btn btn-danger btn-block">
-				<?=form_close();?>
+					<?=form_close();?> -->
+					
+				<!-- tanpa menggunakan form -->
+				<a href="<?=site_url("/buku/");?>" class="btn btn-dark ">&lt;</a>	
+				<a href="<?=site_url("/buku/edit/" . $buku->id);?>" class="btn btn-success btn-block">Edit</a>
+				<a href="<?=site_url("/buku/delete/" . $buku->id);?>" class="btn btn-danger btn-block">Delete</a>
 			</div>
 		</div>

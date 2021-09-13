@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Salam extends CI_Controller {
 	
-	public function index($nama = 'Manusia', $alamat = 'Bandung') {
+	public function index($nama = 'Manusia', $alamat = 'Bumi') {
 		$data['nama'] = $nama;
 		$data['alamat'] = $alamat;
 		$data['daftarPendidikan'] = ['SD', 'SMP', 'SMA'];
