@@ -16,9 +16,9 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="<?=site_url();?>">Home</a></li>
 
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>buku">Buku</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>pelanggan">Pelanggan</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>sewa">Sewa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Buku">Buku</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Pelanggan">Pelanggan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Sewa">Sewa</a></li>
                     </ul>
                 </div>
             </div>
