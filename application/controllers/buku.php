@@ -78,4 +78,34 @@ class Buku extends CI_Controller {
 
 		redirect('buku/index');
 	}
+
+	public function add(){
+		
+		$this->load->library('form_validation');
+        
+		//Menentukan Rules dari Form Validation untuk setiap elemen form sesuai kebutuhan
+		$this->form_validation->set_rules('judul', 'Judul Buku', 'required');
+		$this->form_validation->set_rules('pengarang', 'Nama Pengarang', 'required');
+		$this->form_validation->set_rules('penerbit', 'Nama Penerbit', 'required');
+		$this->form_validation->set_rules('tglTerbit', 'Tanggal Terbit', 'required');
+        
+        if ($this->form_validation->run() === FALSE){
+            $data['title'] = 'Menambah Buku';
+
+            $this->load->view('templates/header');
+            $this->load->view('buku/add');
+            $this->load->view('templates/footer');    
+        }
+        else {
+			//Simpan data baru
+			$result = $this->buku_model->addBuku();
+			$this->session->set_flashdata(
+				($result->status==200) ? 'success' : 'error',
+				"<strong>Respond Status : </strong> $result->status<br />
+				<strong>Respond Error : </strong> $result->error<br />
+				<strong>Message : </strong> $result->message<br />"
+			);
+			redirect(($result->status==200) ? "buku/index" : "buku/add");	//Jika Sukses kembali ke Index Buku, jika Tidak kembali ke Form
+        }
+	}
 }

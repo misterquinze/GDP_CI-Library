@@ -107,4 +107,38 @@ class Buku_Model extends CI_Model {
 
     }
 
+    public function addBuku(){
+        $data = array(
+            'judul' => $this->input->post('judul', true),
+            'pengarang' => $this->input->post('pengarang', true),
+            'penerbit' => $this->input->post('penerbit', true),
+            'tglterbit' => $this->input->post('tglTerbit', true),
+            'isbn' => $this->input->post('isbn', true),
+            'userid' => $this->input->post('userId', true)
+        );
+
+        $svcAdd = curl_init();
+
+        curl_setopt_array($svcAdd, array(
+            CURLOPT_URL => $this->svcUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json')
+        ));
+
+        $response = json_decode(curl_exec($svcAdd));
+
+        curl_close($svcAdd);
+
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+
+    }
+
 }
