@@ -18,7 +18,14 @@ class Pelanggan extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-    public function view() {
-          
+    public function view($pelangganId) {
+		$data['title'] = 'Detail Pelanggan';
+        $data['pelanggan'] = $this->pelanggan_model->getById($pelangganId);
+
+		$this->load->view('templates/header');
+		$this->load->view('pelanggan/view', $data);
+		$this->load->view('templates/footer');        
     }
+
+
 }
