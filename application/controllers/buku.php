@@ -50,12 +50,12 @@ class Buku extends CI_Controller {
 			//Simpan data baru
 			$result = $this->buku_model->editBuku($bukuId);
 
-			// $this->session->set_flashdata(
-			// 	($result->status==200) ? 'success' : 'error',
-			// 	"<strong>Respond Status:</strong> $result->status<br />
-			// 	<strong>Respond Error:</strong> $result->error<br />
-			// 	<strong>Message:</strong> $result->message"
-			// );
+			$this->session->set_flashdata(
+				($result->status==200) ? 'success' : 'error',
+				"<strong>Respond Status:</strong> $result->status<br />
+				<strong>Respond Error:</strong> $result->error<br />
+				<strong>Message:</strong> $result->message"
+			);
 
 			redirect(($result->status==200) ? "buku/index" : "buku/edit/$bukuId");	//Jika Sukses kembali ke Index Buku, jika Tidak kembali ke Form
         }
