@@ -61,36 +61,54 @@ class Pelanggan extends CI_Controller {
 	public function edit($pelangganId) {
 		$data['pelanggan'] = $this->pelanggan_model->getById($pelangganId);
 				
-			//Load Library untuk Form Validation
-			$this->load->library('form_validation');
+		//Load Library untuk Form Validation
+		$this->load->library('form_validation');
 				
-			//Menentukan Rules dari Form Validation untuk setiap elemen form sesuai kebutuhan
-			$this->form_validation->set_rules('kodepel', 'Kode Pelanggan', 'required');
-			$this->form_validation->set_rules('nama', 'Nama Pelanggan', 'required');
-			$this->form_validation->set_rules('alamat', 'AlamatPelanggan', 'required');
-			$this->form_validation->set_rules('telp', 'Telepon Pelanggan', 'required');
-			$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
-			$this->form_validation->set_rules('email', 'Email Pelanggan', 'required');
+		//Menentukan Rules dari Form Validation untuk setiap elemen form sesuai kebutuhan
+		$this->form_validation->set_rules('kodepel', 'Kode Pelanggan', 'required');
+		$this->form_validation->set_rules('nama', 'Nama Pelanggan', 'required');
+		$this->form_validation->set_rules('alamat', 'AlamatPelanggan', 'required');
+		$this->form_validation->set_rules('telp', 'Telepon Pelanggan', 'required');
+		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+		$this->form_validation->set_rules('email', 'Email Pelanggan', 'required');
 				
-			if ($this->form_validation->run() === FALSE) {
-				$data['title'] = 'Edit Pelanggan';
+		if ($this->form_validation->run() === FALSE) {
+			$data['title'] = 'Edit Pelanggan';
 		
-				$this->load->view('templates/header');
-				$this->load->view('pelanggan/edit', $data);
-				$this->load->view('templates/footer');    
-			} else {
-				//Simpan data baru
-				$result = $this->pelanggan_model->editPelanggan($pelangganId);
+			$this->load->view('templates/header');
+			$this->load->view('pelanggan/edit', $data);
+			$this->load->view('templates/footer');    
+		} else {
+			//Simpan data baru
+			$result = $this->pelanggan_model->editPelanggan($pelangganId);
 		
-				$this->session->set_flashdata(
-					($result->status==200) ? 'success' : 'error',
-					"<strong>Respond Status:</strong> $result->status<br />
-					<strong>Respond Error:</strong> $result->error<br />
-					<strong>Message:</strong> $result->message"
-				);
+			$this->session->set_flashdata(
+				($result->status==200) ? 'success' : 'error',
+				"<strong>Respond Status:</strong> $result->status<br />
+				<strong>Respond Error:</strong> $result->error<br />
+				<strong>Message:</strong> $result->message"
+			);
 		
-				redirect(($result->status==200) ? "pelanggan/index" : "pelanggan/edit/$pelangganId");	
-			}
+			redirect(($result->status==200) ? "pelanggan/index" : "pelanggan/edit/$pelangganId");	
 		}
+	}
+
+	public function delete($pelangganId) {
+		if (is_null($pelangganId)) {
+			$this->session->set_flashdata('error', 'pelanggan belum dipilih');
+		}
+	
+		$result = $this->pelanggan_model->deletePelanggan($pelangganId);
+	
+		$this->session->set_flashdata(
+			($result->status==200) ? 'success' : 'error',
+			"<strong>Respond Status : </strong> $result->status<br />
+			<strong>Respond Error : </strong> $result->error<br />
+			<strong>Message : </strong> $result->message<br />"
+		);
+	
+		redirect('pelanggan/index');	
+	}
 
 }
+

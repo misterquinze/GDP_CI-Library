@@ -114,5 +114,29 @@ class Pelanggan_Model extends CI_Model {
             show_404();
 
     }
+
+	public function deletePelanggan($pelangganId) {
+ 
+        $svcDelete = curl_init();
+
+        curl_setopt_array($svcDelete, array(
+            CURLOPT_URL => $this->svcUrl . $pelangganId,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'DELETE'
+        ));
+
+        $response = json_decode(curl_exec($svcDelete));
+
+        curl_close($svcDelete);
+
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+
+    }
     
 }

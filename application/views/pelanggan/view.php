@@ -18,6 +18,6 @@
 
 				<a href="<?=site_url("/pelanggan/");?>" class="btn btn-dark ">&lt;</a>	
 				<a href="<?=site_url("/pelanggan/edit/" . $pelanggan->id);?>" class="btn btn-success btn-block">Edit</a>
-				<!-- <a href="<?=site_url("/pelanggan/delete/" . $pelanggan->id);?>" class="btn btn-danger btn-block">Delete</a> -->
+				<a href="<?=site_url("/pelanggan/delete/" . $pelanggan->id);?>" class="btn btn-danger btn-block">Delete</a>
 			</div>
 		</div>
