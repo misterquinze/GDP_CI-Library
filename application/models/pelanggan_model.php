@@ -45,5 +45,38 @@ class Pelanggan_Model extends CI_Model {
             show_404();
     }
 
+	public function addPelanggan(){
+        $data = array(
+            'kodepel' => $this->input->post('kodepel', true),
+            'nama' => $this->input->post('nama', true),
+            'alamat' => $this->input->post('alamat', true),
+            'telepon' => $this->input->post('telepon', true),
+            'jk' => $this->input->post('jk', true),
+            'email' => $this->input->post('email', true)
+        );
+
+        $svcAdd = curl_init();
+
+        curl_setopt_array($svcAdd, array(
+            CURLOPT_URL => $this->svcUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json')
+        ));
+
+        $response = json_decode(curl_exec($svcAdd));
+
+        curl_close($svcAdd);
+
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+
+}
     
 }
