@@ -9,7 +9,7 @@
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item d-flex justify-content-between"><em>Kode Pelanggan:</em><span><strong><?=$pelanggan->kodepel ?></strong></span></li>
 					<li class="list-group-item d-flex justify-content-between"><em>Alamat:</em><span><?=$pelanggan->alamat ?></span></li>
-					<li class="list-group-item d-flex justify-content-between"><em>Telepon:</em><span><?=$pelanggan->telepon ?></span></li>
+					<li class="list-group-item d-flex justify-content-between"><em>Telepon:</em><span><?=$pelanggan->telp ?></span></li>
 					<li class="list-group-item d-flex justify-content-between"><em>Email:</em><span><?=$pelanggan->email ?></span></li>
 					<li class="list-group-item d-flex justify-content-between"><em>Jenis Kelamin:</em><span><?=$pelanggan->jk ?></span></li>
 				</ul>

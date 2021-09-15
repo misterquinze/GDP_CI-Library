@@ -1,4 +1,4 @@
-<?=form_open("buku/add");?>
+<?=form_open("pelanggan/add");?>
   <fieldset>
     <legend class="h2">Menambah Pelanggan</legend>
     
@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
         <label for="telepon" class="form-label mt-4">Telepon</label>
-        <input type="tel" class="form-control" name="telepon" id="telepon" aria-describedby="telepon" placeholder="Telepon" >
+        <input type="tel" class="form-control" name="telp" id="telepon" aria-describedby="telepon" placeholder="Telepon" >
         <small id="telepontHelp" class="form-text text-muted">Masukkan Nomor Telepon Pelanggan.</small>
     </div>
 	<div class="form-group">

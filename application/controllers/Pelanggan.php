@@ -34,7 +34,7 @@ class Pelanggan extends CI_Controller {
 		$this->form_validation->set_rules('kodepel', 'Kode Pelanggan', 'required');
 		$this->form_validation->set_rules('nama', 'Nama Pelanggan', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat Pelanggan', 'required');
-		$this->form_validation->set_rules('telepon', 'Telepon Pelanggan', 'required');
+		$this->form_validation->set_rules('telp', 'Telepon Pelanggan', 'required');
 		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('email', 'Email Pelanggan', 'required');
 
@@ -47,7 +47,7 @@ class Pelanggan extends CI_Controller {
 
         } else {
 		//Simpan data baru
-			$result = $this->pelanggan_model->addBuku();
+			$result = $this->pelanggan_model->addPelanggan();
 			$this->session->set_flashdata(
 				($result->status==200) ? 'success' : 'error',
 				"<strong>Respond Status : </strong> $result->status<br />

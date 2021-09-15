@@ -50,7 +50,7 @@ class Pelanggan_Model extends CI_Model {
             'kodepel' => $this->input->post('kodepel', true),
             'nama' => $this->input->post('nama', true),
             'alamat' => $this->input->post('alamat', true),
-            'telepon' => $this->input->post('telepon', true),
+            'telp' => $this->input->post('telp', true),
             'jk' => $this->input->post('jk', true),
             'email' => $this->input->post('email', true)
         );
