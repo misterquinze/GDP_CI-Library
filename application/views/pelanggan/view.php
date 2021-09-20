@@ -1,5 +1,5 @@
 	<div class="h2" style="margin-bottom: 10px;"><?=$title; ?></div>
-        
+	<hr>
 		<div class="card bg-light mb-3" style="max-width: 30rem;">
 			<div class="card-header h3">
 				
