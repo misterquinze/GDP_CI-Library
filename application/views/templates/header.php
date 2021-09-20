@@ -19,7 +19,14 @@
                         <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Buku">Buku</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Pelanggan">Pelanggan</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Sewa">Sewa</a></li>
+
+						
                     </ul>
+					<div class="d-flex">
+					<a class="nav-link btn btn-success" style="color: white;" href="<?=site_url();?>Login">Login</a>
+					
+					</div>
+					
                 </div>
             </div>
         </nav>
