@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Pelanggan_Model extends CI_Model {
     private $svcUrl = 'http://localhost:8888/pelanggan/';
 

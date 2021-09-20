@@ -1,7 +1,7 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Login_Model extends CI_Model {
-    private $svcUrl = 'http://localhost:8888/users/email/$userEmail';
+    private $svcUrl = 'http://localhost:8888/users/';
 
     public function request_login() {
         $userEmail = $this->input->post('userEmail', true);
@@ -10,7 +10,7 @@ class Login_Model extends CI_Model {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->svcUrl,
+            CURLOPT_URL => $this->svcUrl .'userRole/' .$userEmail,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -19,6 +19,8 @@ class Login_Model extends CI_Model {
 
         $response = json_decode(curl_exec($curl));
         curl_close($curl);
+
+        // var_dump($response);
         if (isset($response->status)){
             $this->session->set_flashdata(
                'error',
@@ -38,12 +40,15 @@ class Login_Model extends CI_Model {
             $this->session->set_userdata('roleid', $response->roleid);
             $this->session->set_userdata('role', $response->role);
             $this->session->set_userdata('aktif', $response->aktif);
+            // var_dump($response); die();
 
             if(!$response->aktif) {
                 $this->session->set_flashdata('error', "<strong>User is not active</strong>");
 
                 throw new Exception("User is not active");
             }
+            return true;
+
         } else {
             $this->session->set_flashdata('error', "<strong>Wrong Password</strong>");
 
@@ -51,5 +56,7 @@ class Login_Model extends CI_Model {
         }
 
     }
+
+
 
 }

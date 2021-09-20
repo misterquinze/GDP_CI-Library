@@ -10,6 +10,12 @@ class Pelanggan extends CI_Controller {
 	}
 
 	public function index() {
+		if(!$this->session->userdata('username')) {
+			$this->session->set_flashdata('error', "Acces Denied");
+
+			redirect('login', 'refresh');
+		}
+
         $data['title'] = 'Daftar Pelanggan';
         $data['pelanggan'] = $this->pelanggan_model->getAll();
 

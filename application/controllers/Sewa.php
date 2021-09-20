@@ -10,6 +10,12 @@ class Sewa extends CI_Controller {
 	// }
 
 	public function index() {
+		if(!$this->session->userdata('username')) {
+			$this->session->set_flashdata('error', "Acces Denied");
+
+			redirect('login', 'refresh');
+		}
+
         $data['title'] = 'Daftar Sewa';
         // $data['sewa'] = $this->sewa_model->getAll();
 
