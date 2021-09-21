@@ -2,8 +2,8 @@
 	<hr>
 	<?php if($this->session->userdata('role')=='admin' || $this->session->userdata('role')=='write') : ?>
 		<a style="margin-bottom: 10px;" href="<?=site_url("/pelanggan/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
-		<?php endif ?>
-		<?php foreach($pelanggan as $item) : ?>
+	<?php endif ?>
+	<?php foreach($pelanggan as $item) : ?>
 		<div class="card bg-light mb-3" style="max-width: 30rem;">
 			<div class="card-header h4 d-flex justify-content-between">
 				<a href="<?=site_url('pelanggan/view/' . $item->id)?>"><?=$item->nama ?></a>
@@ -17,4 +17,4 @@
 				</ul>
 			</div>
 		</div>
-		<?php endforeach ?>
+	<?php endforeach ?>

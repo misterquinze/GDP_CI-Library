@@ -22,8 +22,10 @@
 					<?=form_close();?> -->
 					
 				<!-- tanpa menggunakan form -->
-				<a href="<?=site_url("/buku/");?>" class="btn btn-dark ">&lt;</a>	
-				<a href="<?=site_url("/buku/edit/" . $buku->id);?>" class="btn btn-success btn-block">Edit</a>
-				<a href="<?=site_url("/buku/delete/" . $buku->id);?>" class="btn btn-danger btn-block">Delete</a>
+				<a href="<?=site_url("/buku/");?>" class="btn btn-dark ">&lt;</a>
+				<?php if($this->session->userdata('role')=='admin' || $this->session->userdata('role')=='write') : ?>	
+					<a href="<?=site_url("/buku/edit/" . $buku->id);?>" class="btn btn-success btn-block">Edit</a>
+					<a href="<?=site_url("/buku/delete/" . $buku->id);?>" class="btn btn-danger btn-block">Delete</a>
+				<?php endif ?>
 			</div>
 		</div>
