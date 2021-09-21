@@ -9,10 +9,7 @@ class Login extends CI_Controller {
     }
 
     public function index() {
-        // if($this->session->userdata('aktif')==0) {
-        //     $this->session->sess_destroy();
-        // }
-
+      
         $data['title'] = ucwords('login');
 
         $this->load->library('form_validation');
