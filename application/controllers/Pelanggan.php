@@ -34,6 +34,12 @@ class Pelanggan extends CI_Controller {
     }
 
 	public function add() {
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		$this->load->library('form_validation');
         
 		//Menentukan Rules dari Form Validation untuk setiap elemen form sesuai kebutuhan
@@ -65,6 +71,13 @@ class Pelanggan extends CI_Controller {
 	}
 
 	public function edit($pelangganId) {
+		
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		$data['pelanggan'] = $this->pelanggan_model->getById($pelangganId);
 				
 		//Load Library untuk Form Validation
@@ -100,6 +113,13 @@ class Pelanggan extends CI_Controller {
 	}
 
 	public function delete($pelangganId) {
+		
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		if (is_null($pelangganId)) {
 			$this->session->set_flashdata('error', 'pelanggan belum dipilih');
 		}

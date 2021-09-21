@@ -10,6 +10,8 @@ class Users extends CI_Controller {
 	}
 
 	public function index() {
+		
+		
         if(!$this->session->userdata('username')) {
 			$this->session->set_flashdata('error', "Acces Denied");
 

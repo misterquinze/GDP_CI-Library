@@ -6,13 +6,13 @@ class Buku extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->model('buku_model');
-
 		if(!$this->session->userdata('username')) {
 			$this->session->set_flashdata('error', "Acces Denied, Please Login");
 
 			redirect('login', 'refresh');
 		}
+
+		$this->load->model('buku_model');
 	}
 
 	public function index() {
@@ -35,6 +35,11 @@ class Buku extends CI_Controller {
     }
 
 	public function add(){
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
 		
 		$this->load->library('form_validation');
         
@@ -65,6 +70,13 @@ class Buku extends CI_Controller {
 	}
 
     public function edit($bukuId) {
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
+
         $data['buku'] = $this->buku_model->getById($bukuId);
         
 		//Load Library untuk Form Validation
@@ -100,6 +112,12 @@ class Buku extends CI_Controller {
     }
 
 	public function delete($bukuId) {
+		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
+
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		if (is_null($bukuId)) {
 			$this->session->set_flashdata('error', 'buku belum dipilih');
 		}
