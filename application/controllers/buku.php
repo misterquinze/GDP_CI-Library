@@ -7,15 +7,16 @@ class Buku extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('buku_model');
-	}
 
-	public function index() {
 		if(!$this->session->userdata('username')) {
-			$this->session->set_flashdata('error', "Acces Denied");
+			$this->session->set_flashdata('error', "Acces Denied, Please Login");
 
 			redirect('login', 'refresh');
 		}
+	}
 
+	public function index() {
+		
         $data['title'] = 'Daftar Buku';
         $data['buku'] = $this->buku_model->getAll();
 

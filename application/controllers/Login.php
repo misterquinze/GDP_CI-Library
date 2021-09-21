@@ -8,8 +8,11 @@ class Login extends CI_Controller {
         $this->load->model('login_model');
     }
 
-
     public function index() {
+        // if($this->session->userdata('aktif')==0) {
+        //     $this->session->sess_destroy();
+        // }
+
         $data['title'] = ucwords('login');
 
         $this->load->library('form_validation');
@@ -27,6 +30,7 @@ class Login extends CI_Controller {
                 redirect('salam', 'refresh');
             }
             catch(Exception $exception) {
+
                 redirect('login', 'refresh');
             }
         }
