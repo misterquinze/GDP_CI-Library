@@ -16,18 +16,18 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="<?=site_url();?>">Home</a></li>
 						<?php if( $this->session->userdata('username') ) : ?>
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Buku">Buku</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Pelanggan">Pelanggan</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?=site_url();?>Sewa">Sewa</a></li>
+							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Buku">Buku</a></li>
+							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Pelanggan">Pelanggan</a></li>
+							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Sewa">Sewa</a></li>
 						<?php endif ?>
 						<?php if($this->session->userdata('role')=='admin'): ?>
-						<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Users">User</a></li>
+							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Users">User</a></li>
 						<?php endif ?>
                     </ul>
 					<div class="d-flex align-items-center">
 						<?php if($this->session->userdata('username')) : ?>
 							<div style="margin-right: 10px;" class="text-white"><?=$this->session->userdata('email')?></div>
-							<a class="nav-link btn btn-success" style="color: white;" href="<?=site_url();?>login/logout">Logout</a>
+							<a class="nav-link btn btn-success" style="color: white;" href="<?=site_url();?>Login/logout">Logout</a>
 						<?php else : ?>
 							<a class="nav-link btn btn-success" style="color: white;" href="<?=site_url();?>login">Login</a>	
 						<?php endif ?>		
