@@ -5,7 +5,11 @@ class Pelanggan extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		if(!$this->session->userdata('username')) {
+			$this->session->set_flashdata('error', "Acces Denied, Please Login");
 
+			redirect('login', 'refresh');
+		}
 		$this->load->model('pelanggan_model');
 	}
 

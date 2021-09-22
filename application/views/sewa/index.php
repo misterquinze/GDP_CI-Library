@@ -1,5 +1,5 @@
 <div class="h2"  style="margin-bottom: 10px;"><?= $title; ?></div>
-	<!-- <a style="margin-bottom: 10px;" href="<?=site_url("/sewa/add")?>" class="btn btn-success btn-block">Add Sewa</a> -->
+	<a style="margin-bottom: 10px;" href="<?=site_url("/sewa/add")?>" class="btn btn-success btn-block">Add Sewa</a>
 		<?php foreach($sewa as $item) : ?>
 		<div class="card bg-light mb-3" style="max-width: 30rem;">
 			<div class="card-header h4 d-flex justify-content-between">
