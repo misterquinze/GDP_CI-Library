@@ -36,7 +36,8 @@ class Users extends CI_Controller {
 
         $data['title'] = 'Detail User';
         $data['users'] = $this->users_model->getUser($userName);
-
+		
+		// var_dump($data['users']); die;
 		$this->load->view('templates/header');
 		$this->load->view('users/view', $data);
 		$this->load->view('templates/footer');        

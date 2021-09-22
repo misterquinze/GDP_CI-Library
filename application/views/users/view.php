@@ -12,11 +12,16 @@
 					<li class="list-group-item d-flex justify-content-between"><em>Username:</em><span><?=$users->username ?></span></li>
 					<li class="list-group-item d-flex justify-content-between"><em>Register Date:</em><span><?=$users->regdate ?></span></li>
 					<li class="list-group-item d-flex justify-content-between"><em>Status:</em>
-					<?php if($this->session->userdata('aktif')==1) : ?>	
-						<span>Aktif</span></li>
+					<!-- <span>$users->aktif</span> -->
+					<?php if($users->aktif === 1) : ?>	
+						<span>Aktif</span>
 					<?php else : ?>
-						<span>Tidak Aktif</span></li>
+						<span>Tidak Aktif</span>
 					<?php endif ?>
+					</li>
+					<li class="list-group-item d-flex justify-content-between"><em>Role:</em><span><?=$users->role ?></span></li>
+				</li>
+				
 				</ul>
 			</div>
 			<!-- <div class="card-footer d-flex justify-content-between">
