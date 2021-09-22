@@ -21,19 +21,25 @@ class Users extends CI_Controller {
         $data['title'] = 'Daftar Users';
         $data['users'] = $this->users_model->getAll();
 
+
 		$this->load->view('templates/header');
-        // var_dump($data['users']);
 		$this->load->view('users/index', $data);
 		$this->load->view('templates/footer');
 	}
 
-    public function view($userId) {
-        // $data['title'] = 'Detail User';
-        // $data['users'] = $this->users_model->getById($bukuId);
+    public function view($userName) {
+		if(!$this->session->userdata('username')) {
+			$this->session->set_flashdata('error', "Acces Denied");
 
-		// $this->load->view('templates/header');
-		// $this->load->view('buku/view', $data);
-		// $this->load->view('templates/footer');        
+			redirect('login', 'refresh');
+		}
+
+        $data['title'] = 'Detail User';
+        $data['users'] = $this->users_model->getUser($userName);
+
+		$this->load->view('templates/header');
+		$this->load->view('users/view', $data);
+		$this->load->view('templates/footer');        
     }
 
 	

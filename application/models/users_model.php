@@ -26,5 +26,33 @@ class Users_Model extends CI_Model {
 
         return $response;
     }
+
+    public function getUser($userEmail) {
+        if (is_null($userEmail)) {
+            $this->session->set_flashdata('error', "Message: Please select a User!");
+            throw new Exception();
+        }
+        $api_url = 'http://localhost:8888/users/userRole/username/';
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $api_url . $userEmail,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+        ));
+
+        $response = json_decode(curl_exec($curl));
+
+        curl_close($curl);
+        // var_dump($response);
+
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+    }
+
+   
     
 }
