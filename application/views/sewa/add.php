@@ -8,7 +8,7 @@
         <small id="isbnHelp" class="form-text text-muted">Masukkan ISBN Buku</small> -->
         <select class="form-select" name="isbn" id="txtIsbn" class="txtIsbn">
             <?php foreach($buku as $item) : ?>
-            <option value="<?=$item->isbn?>"><?=$item->isbn?> - <?=$item->judul ?></option>
+                <option value="<?=$item->isbn?>"><?=$item->isbn?> - <?=$item->judul ?></option>
             <?php endforeach ?>
         </select>
         <small id="isbnHelp" class="form-text text-muted">Pilih Buku</small>          
@@ -21,7 +21,7 @@
             <?php foreach($pelanggan as $item) : ?>
                 <option value="<?=$item->id?>"><?=$item->kodepel?> - <?=$item->nama ?></option>
             <?php endforeach ?>
-            </select>
+        </select>
         <small id="pelangganidHelp" class="form-text text-muted">Pilih Pelanggan.</small>
     </div>
 	<div class="form-group">

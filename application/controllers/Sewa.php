@@ -96,6 +96,8 @@ class Sewa extends CI_Controller {
 
 
         $data['sewa'] = $this->sewa_model->getById($sewaId);
+		$data['buku'] = $this->buku_model->getAll();
+		$data['pelanggan'] = $this->pelanggan_model->getAll();
         
 		//Load Library untuk Form Validation
 		$this->load->library('form_validation');
