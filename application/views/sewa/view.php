@@ -23,7 +23,7 @@
 			</div>
 			<div class="card-footer d-flex justify-content-between">
 				<a href="<?=site_url("/sewa/");?>" class="btn btn-dark ">&lt;</a>
-				<?php if($this->session->userdata('role')=='admin' || $this->session->userdata('role')=='write') : ?>		
+				<?php if($this->session->userdata('role')=='Admin' || $this->session->userdata('role')=='Write') : ?>		
 					<a href="<?=site_url("/sewa/edit/" . $sewa->id);?>" class="btn btn-success btn-block">Edit</a>
 					<a href="<?=site_url("/sewa/delete/" . $sewa->id);?>" class="btn btn-danger btn-block">Delete</a>
 				<?php endif ?>

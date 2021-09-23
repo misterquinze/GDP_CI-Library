@@ -20,7 +20,7 @@
 							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Pelanggan">Pelanggan</a></li>
 							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Sewa">Sewa</a></li>
 						<?php endif ?>
-						<?php if($this->session->userdata('role')=='admin'): ?>
+						<?php if($this->session->userdata('role')=='Admin'): ?>
 							<li class="nav-item"><a class="nav-link" href="<?=site_url();?>Users">User</a></li>
 						<?php endif ?>
                     </ul>

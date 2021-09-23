@@ -1,4 +1,6 @@
-<div class="h2"  style="margin-bottom: 10px;"><?= $title; ?></div>
+<div class="h2 d-flex justify-content-between"  style="margin-bottom: 10px;"><?= $title; ?>
+<a href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
+</div>
 	<hr>
 		<!-- <a style="margin-bottom: 10px;" href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a> -->
 		<!-- <?php foreach($users as $item) : ?>
@@ -18,7 +20,7 @@
 			</div>
 		</div>
 		<?php endforeach ?> -->
-		<a style="margin-bottom: 10px;" href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
+		
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -37,7 +39,7 @@
 				<td><?=$item->name ?></td>
 				<td><?=$item->email ?></td>
 				<td><?=$item->username ?></td>
-				<td><a href="<?=site_url("users/view/" . $item->username);?>" class="btn btn-success btn-block">Detail</a></td>
+				<td><a href="<?=site_url("users/view/" . $item->username);?>" class="btn btn-info btn-block">Detail</a></td>
 				</tr>
 			<?php endforeach ?>
 			</tbody>

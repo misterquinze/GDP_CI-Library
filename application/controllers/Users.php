@@ -44,7 +44,7 @@ class Users extends CI_Controller {
     }
 
 	public function add() {
-		if(strtolower($this->session->userdata('role'))!='write' && strtolower($this->session->userdata('role'))!='admin') {
+		if(strtolower($this->session->userdata('role'))!='Write' && strtolower($this->session->userdata('role'))!='Admin') {
 			$this->session->set_flashdata('error', "Acces Denied, you dont have the access to this feature");
 
 			redirect($_SERVER['HTTP_REFERER']);
@@ -65,7 +65,7 @@ class Users extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $data['title'] = 'Menambah User';
            	$this->load->view('templates/header');
-            $this->load->view('user/add');
+            $this->load->view('users/add');
             $this->load->view('templates/footer');  
 
         } else {
