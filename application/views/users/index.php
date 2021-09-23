@@ -1,5 +1,5 @@
 <div class="h2 d-flex justify-content-between"  style="margin-bottom: 10px;"><?= $title; ?>
-<a href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
+<a href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add User</a>
 </div>
 	<hr>
 		<!-- <a style="margin-bottom: 10px;" href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a> -->

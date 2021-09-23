@@ -1,8 +1,10 @@
-	<div class="h2"  style="margin-bottom: 10px;"><?= $title; ?></div>
-	<hr>
+	<div class="h2 d-flex justify-content-between"  style="margin-bottom: 10px;"><?= $title; ?>
 	<?php if($this->session->userdata('role')=='Admin' || $this->session->userdata('role')=='Write') : ?>
-		<a style="margin-bottom: 10px;" href="<?=site_url("/pelanggan/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
+		<a  href="<?=site_url("/pelanggan/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
 	<?php endif ?>
+</div>
+	<hr>
+	
 	<?php foreach($pelanggan as $item) : ?>
 		<div class="card bg-light mb-3" style="max-width: 30rem;">
 			<div class="card-header h4 d-flex justify-content-between">
