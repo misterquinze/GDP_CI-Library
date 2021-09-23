@@ -18,6 +18,7 @@
 			</div>
 		</div>
 		<?php endforeach ?> -->
+		<a style="margin-bottom: 10px;" href="<?=site_url("/users/add")?>" class="btn btn-success btn-block">Add Pelanggan</a>
 		<table class="table table-hover">
 			<thead>
 				<tr>
