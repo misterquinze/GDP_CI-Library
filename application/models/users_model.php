@@ -53,6 +53,40 @@ class Users_Model extends CI_Model {
             show_404();
     }
 
-   
+    public function addUser(){
+        $data = array(
+            'name' => $this->input->post('name', true),
+            'email' => $this->input->post('email', true),
+            'username' => $this->input->post('username', true),
+            'zipcode' => $this->input->post('zipcode', true),
+            'password' => $this->input->post('password', true),
+            'aktif' => $this->input->post('aktif', true),
+            'role' => $this->input->post('role', true),
+
+        );
+
+        $svcAdd = curl_init();
+
+        curl_setopt_array($svcAdd, array(
+            CURLOPT_URL => $this->svcUrl . '/userRole',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json')
+        ));
+
+        $response = json_decode(curl_exec($svcAdd));
+
+        curl_close($svcAdd);
+
+        // var_dump($response);
+        if (!is_null($response))            
+            return $response;
+        else
+            show_404();
+
+	}
     
 }
